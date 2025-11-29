@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+  <meta charset="UTF-8">
   <title>Auto-fill Settings</title>
   <style>
     body {
@@ -8,21 +10,25 @@
       padding: 10px;
       font-family: sans-serif;
     }
+
     label {
       display: block;
       margin-top: 10px;
       font-weight: bold;
     }
+
     input {
       width: 100%;
       padding: 5px;
       margin-top: 5px;
       box-sizing: border-box;
     }
+
     .row {
       display: flex;
       gap: 5px;
     }
+
     button {
       margin-top: 15px;
       width: 100%;
@@ -32,9 +38,11 @@
       border: none;
       cursor: pointer;
     }
+
     button:hover {
       background-color: #45a049;
     }
+
     #status {
       margin-top: 10px;
       color: green;
@@ -42,6 +50,7 @@
     }
   </style>
 </head>
+
 <body>
   <h3>Auto-fill Settings</h3>
 
@@ -72,9 +81,64 @@
   <label for="email">Email</label>
   <input type="email" id="email" placeholder="example@email.com">
 
+  <hr>
+  <h4>Additional Details</h4>
+
+  <label for="item28">所属 / Major (Required)</label>
+  <input type="text" id="item28" placeholder="e.g., Undergraduate">
+
+  <label for="item29">学年 / Grade (Required)</label>
+  <input type="text" id="item29" placeholder="e.g., 4th year">
+
+  <label for="usageTime">予約時間 / Use Time (Required)</label>
+  <input type="text" id="usageTime" placeholder="e.g., 09:00-12:00">
+
+  <label for="item32">活動の名称 / Activity Name (Required)</label>
+  <input type="text" id="item32" placeholder="e.g., Tennis Practice">
+
+  <label for="item33">活動の目的 / Purpose (Required)</label>
+  <input type="text" id="item33" placeholder="e.g., Club Activity">
+
+  <label for="item38">使用設備 / Tool</label>
+  <input type="text" id="item38" placeholder="e.g., Rackets, Balls">
+
+  <label for="item34">参加人数 / Number of People (Required)</label>
+  <input type="text" id="item34" placeholder="e.g., 10">
+
+  <label>学外者有無 / Outsider</label>
+  <select id="item35">
+    <option value="">Select...</option>
+    <option value="35">No / なし</option>
+    <option value="36">Yes / あり</option>
+  </select>
+
+  <label for="item39">学内人数 / Number of NUT</label>
+  <input type="text" id="item39" placeholder="e.g., 10">
+
+  <label for="item40">学外人数 / Number of Outsider</label>
+  <input type="text" id="item40" placeholder="e.g., 0">
+
+  <label for="item41">学外代表者名 / Outsider Leader Name</label>
+  <input type="text" id="item41">
+
+  <label>学外代表者連絡先 / Outsider Tel</label>
+  <div class="row">
+    <input type="text" id="item42_0" placeholder="090">
+    <input type="text" id="item42_1" placeholder="1234">
+    <input type="text" id="item42_2" placeholder="5678">
+  </div>
+
+  <label for="item25">備考 / Note</label>
+  <input type="text" id="item25">
+
+  <label>
+    <input type="checkbox" id="terms" style="width: auto;"> 利用規約に同意する / Agree to Terms
+  </label>
+
   <button id="save">Save Settings</button>
   <div id="status"></div>
 
   <script src="popup.js"></script>
 </body>
+
 </html>
