@@ -1,4 +1,4 @@
-# 【無料で使えるGoogle Antigravity】 Cursorと同等の開発体験でChrome拡張を作ってみた
+# Cursor vs Google Antigravity：無料でどこまでできるのか？Chrome拡張開発で検証
 
 ## はじめに
 
@@ -10,15 +10,6 @@
 
 そこで、この面倒な作業を自動化するChrome拡張機能を開発することにしました。
 使用したのは、Googleが提供する**無料のAIコーディングアシスタント「Antigravity」**です。
-
-### この記事で得られること
-
-- **Google AntigravityとCursorの使用感の比較**
-- Antigravityを使った実際の開発体験
-- 無料でも高品質なコード生成が可能であることの実証
-- Chrome拡張機能の開発事例（簡易版）
-
-## Google Antigravity vs Cursor：使用感の比較
 
 ### Cursorとは
 
