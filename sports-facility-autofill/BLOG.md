@@ -17,6 +17,17 @@ https://github.com/AobaIwaki123/anitigravity-getting-started/tree/main/sports-fa
 
 ![](https://storage.googleapis.com/zenn-user-upload/9def1d6a595f-20251201.png)
 
+## 開発速度
+
+- 1~2時間程度
+- モデル: Claude Sonnet 4.5
+  - 最初は、Gemini Proを使用していたが、デバッグでつまづき切り替えた
+
+## 使いづらい部分
+
+- Chrome Blowserと深く連携しているが、IDEとブラウザの間の通信に時間がかかったり、ブラウザに対するJS実行に一々許可がいる部分が面倒
+- AIに全てを許可することも可能だが、いつでもそれができるわけではないのでもallow listのように似たようなJSは承認をスキップできる機能があると嬉しい
+
 ## 結論
 
 使ってみた感想ですが、操作感はCursorなどとほぼ同じだったためかなり使いやすかったです。
