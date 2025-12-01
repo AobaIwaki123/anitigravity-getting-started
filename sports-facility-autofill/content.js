@@ -60,83 +60,56 @@ function fillRadio(name, value) {
     });
 }
 
-chrome.storage.sync.get(
-    [
-        'groupName', 'lastName', 'firstName', 'studentNo', 'tel1', 'tel2', 'tel3', 'email',
-        'item28', 'item29', 'usageTime', 'item32', 'item33', 'item38', 'item34',
-        'item35', 'item39', 'item40', 'item41', 'item42_0', 'item42_1', 'item42_2',
-        'item25', 'terms'
-    ],
-    (items) => {
-        if (chrome.runtime.lastError) {
-            console.error('Error retrieving settings:', chrome.runtime.lastError);
-            return;
-        }
+// Field mapping: storage key -> field ID
+const FIELD_MAPPING = {
+    groupName: FIELD_IDS.groupName,
+    lastName: FIELD_IDS.lastName,
+    firstName: FIELD_IDS.firstName,
+    studentNo: FIELD_IDS.studentNo,
+    tel1: FIELD_IDS.tel1,
+    tel2: FIELD_IDS.tel2,
+    tel3: FIELD_IDS.tel3,
+    email: FIELD_IDS.email,
+    item28: FIELD_IDS.item28,
+    item29: FIELD_IDS.item29,
+    usageTime: FIELD_IDS.usageTime,
+    item32: FIELD_IDS.item32,
+    item33: FIELD_IDS.item33,
+    item38: FIELD_IDS.item38,
+    item34: FIELD_IDS.item34,
+    item39: FIELD_IDS.item39,
+    item40: FIELD_IDS.item40,
+    item41: FIELD_IDS.item41,
+    item42_0: FIELD_IDS.item42_0,
+    item42_1: FIELD_IDS.item42_1,
+    item42_2: FIELD_IDS.item42_2,
+    item25: FIELD_IDS.item25,
+    terms: FIELD_IDS.terms
+};
 
-        console.log('Sports Facility Auto-fill: Filling form...');
-        console.log('Retrieved settings:', items);
-
-        // Fill basic fields
-        fillField(FIELD_IDS.groupName, items.groupName);
-        fillField(FIELD_IDS.lastName, items.lastName);
-        fillField(FIELD_IDS.firstName, items.firstName);
-        fillField(FIELD_IDS.studentNo, items.studentNo);
-        fillField(FIELD_IDS.tel1, items.tel1);
-        fillField(FIELD_IDS.tel2, items.tel2);
-        fillField(FIELD_IDS.tel3, items.tel3);
-        fillField(FIELD_IDS.email, items.email);
-        fillField(FIELD_IDS.emailConfirm, items.email);
-
-        // Fill additional details with logging
-        console.log('Filling Additional Details...');
-        console.log('item28 value:', items.item28, 'element:', document.getElementById(FIELD_IDS.item28));
-        fillField(FIELD_IDS.item28, items.item28);
-
-        console.log('item29 value:', items.item29, 'element:', document.getElementById(FIELD_IDS.item29));
-        fillField(FIELD_IDS.item29, items.item29);
-
-        console.log('usageTime value:', items.usageTime, 'element:', document.getElementById(FIELD_IDS.usageTime));
-        fillField(FIELD_IDS.usageTime, items.usageTime);
-
-        console.log('item32 value:', items.item32, 'element:', document.getElementById(FIELD_IDS.item32));
-        fillField(FIELD_IDS.item32, items.item32);
-
-        console.log('item33 value:', items.item33, 'element:', document.getElementById(FIELD_IDS.item33));
-        fillField(FIELD_IDS.item33, items.item33);
-
-        console.log('item38 value:', items.item38, 'element:', document.getElementById(FIELD_IDS.item38));
-        fillField(FIELD_IDS.item38, items.item38);
-
-        console.log('item34 value:', items.item34, 'element:', document.getElementById(FIELD_IDS.item34));
-        fillField(FIELD_IDS.item34, items.item34);
-
-        console.log('item35 value:', items.item35);
-        fillRadio('reservations[addition_values][item_35]', items.item35);
-
-        console.log('item39 value:', items.item39, 'element:', document.getElementById(FIELD_IDS.item39));
-        fillField(FIELD_IDS.item39, items.item39);
-
-        console.log('item40 value:', items.item40, 'element:', document.getElementById(FIELD_IDS.item40));
-        fillField(FIELD_IDS.item40, items.item40);
-
-        console.log('item41 value:', items.item41, 'element:', document.getElementById(FIELD_IDS.item41));
-        fillField(FIELD_IDS.item41, items.item41);
-
-        console.log('item42_0 value:', items.item42_0, 'element:', document.getElementById(FIELD_IDS.item42_0));
-        fillField(FIELD_IDS.item42_0, items.item42_0);
-
-        console.log('item42_1 value:', items.item42_1, 'element:', document.getElementById(FIELD_IDS.item42_1));
-        fillField(FIELD_IDS.item42_1, items.item42_1);
-
-        console.log('item42_2 value:', items.item42_2, 'element:', document.getElementById(FIELD_IDS.item42_2));
-        fillField(FIELD_IDS.item42_2, items.item42_2);
-
-        console.log('item25 value:', items.item25, 'element:', document.getElementById(FIELD_IDS.item25));
-        fillField(FIELD_IDS.item25, items.item25);
-
-        console.log('terms value:', items.terms, 'element:', document.getElementById(FIELD_IDS.terms));
-        fillField(FIELD_IDS.terms, items.terms);
-
-        console.log('Auto-fill complete!');
+chrome.storage.sync.get(Object.keys(FIELD_MAPPING).concat(['item35']), (items) => {
+    if (chrome.runtime.lastError) {
+        console.error('Error retrieving settings:', chrome.runtime.lastError);
+        return;
     }
-);
+
+    console.log('Sports Facility Auto-fill: Filling form...');
+    console.log('Retrieved settings:', items);
+
+    // Fill all mapped fields
+    Object.entries(FIELD_MAPPING).forEach(([key, fieldId]) => {
+        if (items[key] !== undefined) {
+            fillField(fieldId, items[key]);
+        }
+    });
+
+    // Email confirmation uses the same value as email
+    fillField(FIELD_IDS.emailConfirm, items.email);
+
+    // Handle radio button separately
+    if (items.item35) {
+        fillRadio('reservations[addition_values][item_35]', items.item35);
+    }
+
+    console.log('Auto-fill complete!');
+});
