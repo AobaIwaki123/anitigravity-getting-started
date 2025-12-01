@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Google Antigravityを使ったChrome拡張開発の検証LT">
+    <title>Google Antigravityって実際どう? - LT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="presentation">
+        <!-- Slide 1: Title -->
+        <section class="slide active" id="slide-1">
+            <div class="slide-content">
+                <div class="title-container">
+                    <h1 class="main-title">
+                        <span class="gradient-text">Google Antigravity</span><br>
+                        って実際どう?
+                    </h1>
+                    <p class="subtitle">Chrome拡張開発で検証してみた</p>
+                </div>
+                <div class="decorative-elements">
+                    <div class="circle circle-1"></div>
+                    <div class="circle circle-2"></div>
+                    <div class="circle circle-3"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 2: Problem -->
+        <section class="slide" id="slide-2">
+            <div class="slide-content">
+                <h2 class="slide-title">背景・課題</h2>
+                <div class="content-box">
+                    <h3>大学の体育施設予約フォームが長すぎる...</h3>
+                    <ul class="feature-list">
+                        <li>毎回同じ情報を入力するのが面倒</li>
+                        <li>入力項目が多くて時間がかかる</li>
+                        <li>入力ミスも発生しやすい</li>
+                    </ul>
+                    <div class="arrow-down">↓</div>
+                    <p class="solution-text">自動入力するChrome拡張を作ろう!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: Solution -->
+        <section class="slide" id="slide-3">
+            <div class="slide-content">
+                <h2 class="slide-title">開発したもの</h2>
+                <div class="content-box">
+                    <h3>スポーツ施設予約フォーム自動入力拡張</h3>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h4>ワンクリック入力</h4>
+                            <p>保存した情報を自動で入力</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>設定保存</h4>
+                            <p>よく使う情報を記憶</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>正確な入力</h4>
+                            <p>ミスなく確実に</p>
+                        </div>
+                    </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: Demo -->
+        <section class="slide" id="slide-4">
+            <div class="slide-content">
+                <h2 class="slide-title">デモ</h2>
+                <div class="content-box demo-box">
+                    <div class="demo-container">
+                        <img src="https://storage.googleapis.com/zenn-user-upload/9def1d6a595f-20251201.png"
+                            alt="Chrome拡張のデモスクリーンショット" class="demo-image">
+                        <p class="demo-caption">拡張機能のポップアップ画面</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: Conclusion -->
+        <section class="slide" id="slide-5">
+            <div class="slide-content">
+                <h2 class="slide-title">結論・感想</h2>
+                <div class="content-box conclusion-box">
+                    <div class="conclusion-item">
+                        <div class="text">
+                            <h4>操作感はCursorとほぼ同じ</h4>
+                            <p>使いやすくて学習コストが低い</p>
+                        </div>
+                    </div>
+                    <div class="conclusion-item highlight">
+                        <div class="text">
+                            <h4>完全無料でGemini Pro & Claude Sonnet 4.5使い放題!</h4>
+                            <p>これが最高のポイント</p>
+                        </div>
+                    </div>
+                    <div class="conclusion-item">
+                        <div class="text">
+                            <h4>今のうちに使い倒そう</h4>
+                            <p>将来的には有料化される可能性も...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
