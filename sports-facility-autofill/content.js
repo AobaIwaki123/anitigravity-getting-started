@@ -34,16 +34,14 @@ function fillField(id, value) {
     if (element && value !== undefined && value !== null && value !== '') {
         if (element.type === 'checkbox') {
             element.checked = value;
-        } else if (element.tagName.toLowerCase() === 'select') {
-            element.value = value;
         } else {
-            // This branch handles text inputs, number inputs, and textarea elements.
+            // This handles text inputs, number inputs, textarea, and select elements.
             element.value = value;
         }
         // Dispatch input event to ensure any listeners pick up the change
         element.dispatchEvent(new Event('input', { bubbles: true }));
         element.dispatchEvent(new Event('change', { bubbles: true }));
-        element.dispatchEvent(new Event('blur', { bubbles: true })); // Ensure blur event is dispatched
+        element.dispatchEvent(new Event('blur', { bubbles: true }));
     }
 }
 
